@@ -73,6 +73,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(1.5f, 3f));
 
         destroyable.DestroyObject();
+        ObjectsController.FreeObject(target);
         GoWork();
     }
 
@@ -94,7 +95,7 @@ public class Enemy : MonoBehaviour
             trigger.Trigger();
             yield return new WaitForSeconds(Random.Range(0.5f, 2f));
         }
-
+        ObjectsController.FreeObject(target);
         GoWork();
     }
 }
