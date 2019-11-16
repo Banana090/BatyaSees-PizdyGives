@@ -55,6 +55,10 @@ public class Enemy : MonoBehaviour
                 case ObjectType.Collectable:
                     currentCoroutine = StartCoroutine(WorkWithCollectable());
                     break;
+
+                case ObjectType.Movable:
+                    currentCoroutine = StartCoroutine(WorkWithMovable());
+                    break;
             }
         }
     }
@@ -69,13 +73,43 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private IEnumerator WorkWithMovable()
+    {
+        MovableObject movable = target as MovableObject;
+
+        while (Vector2.Distance(transform.position, target.transform.position) > 1f)
+        {
+            Vector3 moveDir = (target.transform.position - transform.position).normalized;
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+            transform.localScale = new Vector3(Mathf.Sign(moveDir.x), 1, 1);
+            yield return null;
+        }
+
+        Vector3 offset = target.transform.position - transform.position;
+        Vector3 moveTo = (GameManager.GetRandomPointInRoom() - transform.position).normalized;
+        float timeToDrag = Random.Range(1.5f, 3f);
+        float startTime = Time.time;
+
+        while (startTime + timeToDrag >= Time.time)
+        {
+            transform.position += moveTo * moveSpeed * 0.3f * Time.deltaTime;
+            target.transform.position = transform.position + offset;
+            yield return null;
+        }
+
+        ObjectsController.FreeObject(target);
+        GoWork();
+    }
+
     private IEnumerator WorkWithCollectable()
     {
         StackObject stack = target as StackObject;
 
         while (Vector2.Distance(transform.position, target.transform.position) > 1f)
         {
-            transform.position += (target.transform.position - transform.position).normalized * moveSpeed * Time.deltaTime;
+            Vector3 moveDir = (target.transform.position - transform.position).normalized;
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+            transform.localScale = new Vector3(Mathf.Sign(moveDir.x), 1, 1);
             yield return null;
         }
 
@@ -89,8 +123,9 @@ public class Enemy : MonoBehaviour
 
         while (Vector2.Distance(transform.position, targetPoint) > 0.5f)
         {
-            transform.position += (targetPoint - transform.position).normalized * moveSpeed * Time.deltaTime;
-            yield return null;
+            Vector3 moveDir = (targetPoint - transform.position).normalized;
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+            transform.localScale = new Vector3(Mathf.Sign(moveDir.x), 1, 1);
         }
 
         item.SetParent(null);
@@ -107,7 +142,9 @@ public class Enemy : MonoBehaviour
 
         while (Vector2.Distance(transform.position, target.transform.position) > 1f)
         {
-            transform.position += (target.transform.position - transform.position).normalized * moveSpeed * Time.deltaTime;
+            Vector3 moveDir = (target.transform.position - transform.position).normalized;
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+            transform.localScale = new Vector3(Mathf.Sign(moveDir.x), 1, 1);
             yield return null;
         }
 
@@ -124,7 +161,9 @@ public class Enemy : MonoBehaviour
 
         while (Vector2.Distance(transform.position, target.transform.position) > 1f)
         {
-            transform.position += (target.transform.position - transform.position).normalized * moveSpeed * Time.deltaTime;
+            Vector3 moveDir = (target.transform.position - transform.position).normalized;
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+            transform.localScale = new Vector3(Mathf.Sign(moveDir.x), 1, 1);
             yield return null;
         }
 

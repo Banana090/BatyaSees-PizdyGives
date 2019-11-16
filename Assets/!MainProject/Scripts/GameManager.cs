@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using TMPro;
 
 public class GameManager : SerializedMonoBehaviour
 {
     public static GameManager instance;
+
+    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private float watchingTime;
+    [SerializeField] private float playingTime;
 
     [SerializeField] public LayerMask interactableObjects { get; private set; }
     [SerializeField] public int interactableLayerInt { get; private set; }
@@ -19,6 +24,44 @@ public class GameManager : SerializedMonoBehaviour
             Destroy(this);
 
         DontDestroyOnLoad(gameObject);
+        StartCoroutine(StartWatchingTime());
+    }
+
+    private IEnumerator StartWatchingTime()
+    {
+        float timer = watchingTime;
+        while (timer > 0)
+        {
+            timerText.text = ((int)timer).ToString();
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        timerText.text = "";
+
+        EnemyController.instance.StartCoroutine(EnemyController.instance.SpawnEnemies(5, 20));
+    }
+
+    private IEnumerator GameTimer()
+    {
+        timerText.text = playingTime.ToString();
+        float timeLeft = playingTime;
+
+        while (timeLeft > 0)
+        {
+            timerText.text = ((int)timeLeft).ToString();
+            timeLeft -= timeLeft <= 3 ? Time.deltaTime / 2 : Time.deltaTime;
+            yield return null;
+        }
+
+        timerText.text = "";
+
+        //Check for win? <<<<<
+    }
+
+    public static void StartGameTimer()
+    {
+        instance.StartCoroutine(instance.GameTimer());
     }
 
     public static Vector3 GetRandomPointInRoom()
