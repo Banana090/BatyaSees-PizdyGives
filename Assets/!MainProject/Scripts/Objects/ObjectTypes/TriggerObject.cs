@@ -6,8 +6,8 @@ public sealed class TriggerObject : SceneObject, IInteractableSceneObject
 {
     [SerializeField] private Transform[] states;
 
-    private int startIndex;
-    private int currentIndex;
+    public int startIndex { get; private set; }
+    public int currentIndex { get; private set; }
 
     private void Start()
     {

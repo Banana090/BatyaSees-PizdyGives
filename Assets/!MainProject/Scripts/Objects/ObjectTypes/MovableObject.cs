@@ -4,7 +4,7 @@ using UnityEngine;
 
 public sealed class MovableObject : SceneObject, IInteractableSceneObject
 {
-    public Vector2 startPosition { get; private set; }
+    public Vector3 startPosition { get; private set; }
 
     private void Start()
     {
@@ -14,6 +14,6 @@ public sealed class MovableObject : SceneObject, IInteractableSceneObject
 
     public void Interact()
     {
-        PlayerDrag.instance.SetDragObject(this);
+        PlayerDrag.instance.SetDragObject(transform);
     }
 }

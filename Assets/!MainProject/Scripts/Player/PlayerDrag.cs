@@ -8,7 +8,7 @@ public class PlayerDrag : MonoBehaviour
 
     [SerializeField] private float dragSpeedMultiplier;
 
-    private MovableObject dragObject;
+    private Transform dragObject;
     private Interacting interactingScript;
     private PlayerMovement movementScript;
 
@@ -25,15 +25,15 @@ public class PlayerDrag : MonoBehaviour
 
     public void ReleaseDrag()
     {
-        dragObject.transform.SetParent(null);
+        dragObject.SetParent(null);
         movementScript.moveSpeedMultiplier = 1f;
         dragObject = null;
     }
 
-    public void SetDragObject(MovableObject obj)
+    public void SetDragObject(Transform obj)
     {
         dragObject = obj;
-        dragObject.transform.SetParent(transform);
+        dragObject.SetParent(transform);
         interactingScript.isDragging = true;
         movementScript.moveSpeedMultiplier = dragSpeedMultiplier;
     }

@@ -56,7 +56,17 @@ public class GameManager : SerializedMonoBehaviour
 
         timerText.text = "";
 
-        //Check for win? <<<<<
+        List<Transform> wrongObjects;
+
+        if (ObjectsController.CheckForWin(out wrongObjects))
+        {
+            Debug.Log("win");
+        }
+        else
+        {
+            //Lost. Highlight wrong objects
+            Debug.Log("lose");
+        }
     }
 
     public static void StartGameTimer()
