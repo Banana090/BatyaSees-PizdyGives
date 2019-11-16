@@ -10,10 +10,12 @@ public class Enemy : MonoBehaviour
     private Coroutine currentCoroutine;
     private float moveSpeed;
     private Transform item;
+    private Animator anim;
 
     private void Start()
     {
-        moveSpeed = Random.Range(1f, 3f);
+        anim = GetComponentInChildren<Animator>();
+        moveSpeed = Random.Range(2f, 4.5f);
         StartCoroutine(UnwantedObjectsChance());
         GoWork();
     }
@@ -28,8 +30,10 @@ public class Enemy : MonoBehaviour
             item.SetParent(null);
             item.position = transform.position;
         }
-        
-        Destroy(gameObject);
+
+        anim.SetBool("Run", false);
+        anim.SetBool("Disappear", true);
+        Destroy(gameObject, 2f);
     }
 
     public void GoWork()
@@ -38,7 +42,7 @@ public class Enemy : MonoBehaviour
 
         if (target == null)
         {
-            return;
+            anim.SetBool("Run", false);
         }
         else
         {
@@ -75,8 +79,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator WorkWithMovable()
     {
-        MovableObject movable = target as MovableObject;
-
+        anim.SetBool("Run", true);
         while (Vector2.Distance(transform.position, target.transform.position) > 1f)
         {
             Vector3 moveDir = (target.transform.position - transform.position).normalized;
@@ -96,7 +99,7 @@ public class Enemy : MonoBehaviour
             target.transform.position = transform.position + offset;
             yield return null;
         }
-
+        anim.SetBool("Run", false);
         ObjectsController.FreeObject(target);
         GoWork();
     }
@@ -104,6 +107,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator WorkWithCollectable()
     {
         StackObject stack = target as StackObject;
+        anim.SetBool("Run", true);
 
         while (Vector2.Distance(transform.position, target.transform.position) > 1f)
         {
@@ -132,6 +136,7 @@ public class Enemy : MonoBehaviour
         item.position = transform.position;
         item = null;
 
+        anim.SetBool("Run", false);
         ObjectsController.FreeObject(target);
         GoWork();
     }
@@ -140,6 +145,7 @@ public class Enemy : MonoBehaviour
     {
         DestroyableObject destroyable = target as DestroyableObject;
 
+        anim.SetBool("Run", true);
         while (Vector2.Distance(transform.position, target.transform.position) > 1f)
         {
             Vector3 moveDir = (target.transform.position - transform.position).normalized;
@@ -148,6 +154,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
+        anim.SetBool("Run", false);
         yield return new WaitForSeconds(Random.Range(1.5f, 3f));
 
         destroyable.DestroyObject();
@@ -159,6 +166,7 @@ public class Enemy : MonoBehaviour
     {
         TriggerObject trigger = target as TriggerObject;
 
+        anim.SetBool("Run", true);
         while (Vector2.Distance(transform.position, target.transform.position) > 1f)
         {
             Vector3 moveDir = (target.transform.position - transform.position).normalized;
@@ -167,6 +175,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
+        anim.SetBool("Run", false);
         float workingTime = Random.Range(1f, 2.5f);
         float timeStartedWorking = Time.time;
 
