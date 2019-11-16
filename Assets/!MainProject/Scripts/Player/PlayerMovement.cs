@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (inputVector != Vector2.zero)
-            CheckForMovableObjects();
+        //if (inputVector != Vector2.zero)
+            //CheckForMovableObjects();
 
         rb.velocity = inputVector * moveSpeed;
     }
