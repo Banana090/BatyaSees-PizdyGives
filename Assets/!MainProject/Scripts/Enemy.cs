@@ -46,8 +46,8 @@ public class Enemy : MonoBehaviour
                     currentCoroutine = StartCoroutine(WorkWithDestroyable());
                     break;
 
-                default:
-                    Debug.Log("default");
+                case ObjectType.Collectable:
+                    currentCoroutine = StartCoroutine(WorkWithCollectable());
                     break;
             }
         }
@@ -55,9 +55,43 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator UnwantedObjectsChance()
     {
-        yield return new WaitForSeconds(1f);
-        if (Random.Range(0f, 1f) < 0.02f)
-            Instantiate(possibleUnwantedObjects[Random.Range(0, possibleUnwantedObjects.Length)], transform.position, Quaternion.identity);
+        //while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            if (Random.Range(0f, 1f) < 0.02f)
+                Instantiate(possibleUnwantedObjects[Random.Range(0, possibleUnwantedObjects.Length)], transform.position, Quaternion.identity);
+        }
+    }
+
+    private IEnumerator WorkWithCollectable()
+    {
+        StackObject stack = target as StackObject;
+
+        while (Vector2.Distance(transform.position, target.transform.position) > 1f)
+        {
+            transform.position += (target.transform.position - transform.position).normalized * moveSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        Transform item = stack.GetItem();
+        if (item == null) yield break;
+
+        item.SetParent(transform);
+        item.localPosition = Vector3.up * 1.2f;
+
+        Vector3 targetPoint = GameManager.GetRandomPointInRoom();
+
+        while (Vector2.Distance(transform.position, targetPoint) > 0.5f)
+        {
+            transform.position += (targetPoint - transform.position).normalized * moveSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        item.SetParent(null);
+        item.position = transform.position;
+
+        ObjectsController.FreeObject(target);
+        GoWork();
     }
 
     private IEnumerator WorkWithDestroyable()

@@ -35,6 +35,7 @@ public class PlayerPickup : MonoBehaviour
             if (Vector2.Distance(transform.position, pickedUpItem.parentStack.position) < distanceToStack)
             {
                 //Call Game Manager, say its gone
+                pickedUpItem.parentStack.GetComponent<StackObject>().PutItem();
                 Destroy(pickedUpItem.gameObject);
                 pickedUpItem = null;
             }

@@ -12,14 +12,14 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         enemies = new Stack<Enemy>();
-        StartCoroutine(SpawnEnemies(3));
+        StartCoroutine(SpawnEnemies(1));
     }
 
     private IEnumerator SpawnEnemies(int count)
     {
         for (int i = 0; i < count; i++)
         {
-            enemies.Push(Instantiate(enemyPrefab, spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity).GetComponent<Enemy>());
+            enemies.Push(Instantiate(enemyPrefab, spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity, transform).GetComponent<Enemy>());
             yield return new WaitForSeconds(Random.Range(0.2f, 1.1f));
         }
 
@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator StopAttack()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(15f);
 
         int iterations = enemies.Count;
 
