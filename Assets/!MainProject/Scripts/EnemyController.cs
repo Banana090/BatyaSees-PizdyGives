@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         enemies = new Stack<Enemy>();
-        StartCoroutine(SpawnEnemies(1));
+        StartCoroutine(SpawnEnemies(1)); //DEBUG
     }
 
     private IEnumerator SpawnEnemies(int count)
