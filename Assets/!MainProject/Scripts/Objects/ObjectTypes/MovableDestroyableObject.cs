@@ -15,7 +15,6 @@ public class MovableDestroyableObject : DestroyableObject
         RepairFully();
     }
 
-    [Sirenix.OdinInspector.Button]
     public override void DestroyObject()
     {
         base.DestroyObject();
