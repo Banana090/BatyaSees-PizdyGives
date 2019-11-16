@@ -4,61 +4,34 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Transform visualRoot;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float raycastDistance;
 
     [HideInInspector] public bool canMove = true;
 
     private Rigidbody2D rb;
     private Vector2 inputVector;
+    private Animator anim;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
         inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         inputVector.Normalize();
+
+        anim.SetBool("walkRun", inputVector != Vector2.zero);
+
+        if (inputVector != Vector2.zero)
+            visualRoot.localScale = new Vector3(Mathf.Sign(inputVector.x), 1, 1);
     }
 
     private void FixedUpdate()
     {
-        //if (inputVector != Vector2.zero)
-            //CheckForMovableObjects();
-
         rb.velocity = inputVector * moveSpeed;
-    }
-
-    private void CheckForMovableObjects()
-    {
-        Direction moveDir = Direction.Down;
-        Transform hitted = null;
-
-        if (inputVector.x != 0)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * inputVector.x, raycastDistance, GameManager.instance.movableObjects);
-            if (hit)
-            {
-                moveDir = Mathf.Sign(inputVector.x) > 0 ? Direction.Right : Direction.Left;
-                hitted = hit.transform;
-            }
-        }
-
-        if (inputVector.y != 0)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up * inputVector.y, raycastDistance, GameManager.instance.movableObjects);
-            if (hit)
-            {
-                moveDir = Mathf.Sign(inputVector.y) > 0 ? Direction.Up : Direction.Down;
-                hitted = hit.transform;
-            }
-        }
-
-        if (hitted != null)
-        {
-            hitted.GetComponent<MovableObject>().Move(moveDir, moveSpeed);
-        }
     }
 }
