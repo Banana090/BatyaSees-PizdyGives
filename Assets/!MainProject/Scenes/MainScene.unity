@@ -415,6 +415,7 @@ MonoBehaviour:
       Data: 
   timerText: {fileID: 1846249708}
   watchingTime: 10
+  attackTime: 10
   playingTime: 30
 --- !u!1 &1440202884
 GameObject:

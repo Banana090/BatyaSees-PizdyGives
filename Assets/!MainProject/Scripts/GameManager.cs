@@ -10,6 +10,7 @@ public class GameManager : SerializedMonoBehaviour
 
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private float watchingTime;
+    [SerializeField] private float attackTime;
     [SerializeField] private float playingTime;
 
     [SerializeField] public LayerMask interactableObjects { get; private set; }
@@ -39,7 +40,7 @@ public class GameManager : SerializedMonoBehaviour
 
         timerText.text = "";
 
-        EnemyController.instance.StartCoroutine(EnemyController.instance.SpawnEnemies(5, 20));
+        EnemyController.instance.StartCoroutine(EnemyController.instance.SpawnEnemies(5, attackTime));
     }
 
     private IEnumerator GameTimer()
@@ -60,12 +61,16 @@ public class GameManager : SerializedMonoBehaviour
 
         if (ObjectsController.CheckForWin(out wrongObjects))
         {
-            Debug.Log("win");
+            timerText.text = "WIN";
         }
         else
         {
             //Lost. Highlight wrong objects
-            Debug.Log("lose");
+            timerText.text = "LOST";
+            foreach (var item in wrongObjects)
+            {
+                Debug.Log(item.name);
+            }
         }
     }
 
