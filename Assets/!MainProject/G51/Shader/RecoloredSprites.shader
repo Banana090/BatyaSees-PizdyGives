@@ -114,7 +114,7 @@ Shader "g51/recoloredSprites"
 }
 /*ASEBEGIN
 Version=17000
--1920;0;1920;1059;2591.691;358.7597;1;True;False
+-1920;0;1920;1059;2016.727;389.3642;1;True;False
 Node;AmplifyShaderEditor.TemplateShaderPropertyNode;1;-2211.454,-14.37745;Float;False;0;0;_MainTex;Shader;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.VertexColorNode;25;-2159.966,253.8548;Float;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SamplerNode;4;-1978.454,-35.37745;Float;True;Property;_TextureSample0;Texture Sample 0;1;0;Create;True;0;0;False;0;None;262c8618863806a47985c78ddbc4bf9e;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -124,7 +124,7 @@ Node;AmplifyShaderEditor.TFHCRemapNode;28;-1676.691,248.2403;Float;False;5;0;FLO
 Node;AmplifyShaderEditor.SimpleAddOpNode;26;-1432.691,-2.759705;Float;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SamplerNode;5;-1301.692,-103.105;Float;True;Property;_gradient;_gradient;0;0;Create;True;0;0;False;0;None;a45d2d5d6ab4e2d4091476ee54a4215d;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.DynamicAppendNode;10;-925.1214,-22.73832;Float;False;COLOR;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.TemplateShaderPropertyNode;24;-1264.551,264.7817;Float;False;0;0;_Color;Shader;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TemplateShaderPropertyNode;24;-1134.55,295.9815;Float;False;0;0;_Color;Shader;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;23;-669.3937,72.75295;Float;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;0,0;Float;False;True;2;Float;ASEMaterialInspector;0;6;g51/recoloredSprites;0f8ba0101102bb14ebf021ddadce9b49;True;SubShader 0 Pass 0;0;0;SubShader 0 Pass 0;2;True;3;1;False;-1;10;False;-1;0;1;False;-1;0;False;-1;False;False;True;2;False;-1;False;False;True;2;False;-1;False;False;True;5;Queue=Transparent=Queue=0;IgnoreProjector=True;RenderType=Transparent=RenderType;PreviewType=Plane;CanUseSpriteAtlas=True;False;0;False;False;False;False;False;False;False;False;False;False;True;2;0;;0;0;Standard;0;0;1;True;False;2;0;FLOAT4;0,0,0,0;False;1;FLOAT3;0,0,0;False;0
 WireConnection;4;0;1;0
@@ -143,4 +143,4 @@ WireConnection;23;0;10;0
 WireConnection;23;1;24;0
 WireConnection;0;0;23;0
 ASEEND*/
-//CHKSM=5E5CD4712DC4F3F22C5E2DA8FAC515900D9D0C15
+//CHKSM=5FD938CC0B0A3BF5F0531167099D28DB34DAFE3A
