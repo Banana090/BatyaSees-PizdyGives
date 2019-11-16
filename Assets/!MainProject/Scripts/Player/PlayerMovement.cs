@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     [HideInInspector] public bool canMove = true;
+    [HideInInspector] public float moveSpeedMultiplier;
 
     private Rigidbody2D rb;
     private Vector2 inputVector;
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
+        moveSpeedMultiplier = 1f;
     }
 
     private void Update()
@@ -32,6 +34,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = inputVector * moveSpeed;
+        rb.velocity = inputVector * moveSpeed * moveSpeedMultiplier;
     }
 }

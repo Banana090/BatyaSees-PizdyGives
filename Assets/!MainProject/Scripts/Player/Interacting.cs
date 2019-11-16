@@ -7,15 +7,25 @@ public class Interacting : MonoBehaviour
     [SerializeField] private float radius;
     [SerializeField] private Vector3 offset;
 
+    [HideInInspector] public bool isDragging;
+
     private IInteractableSceneObject nearestInteractableObject;
 
     private void Update()
     {
         CheckForNearestObjects();
 
-        if (Input.GetKeyDown(KeyCode.Space) && nearestInteractableObject != null)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            nearestInteractableObject.Interact();
+            if (!isDragging && nearestInteractableObject != null)
+            {
+                nearestInteractableObject.Interact();
+            }
+            else if (isDragging)
+            {
+                PlayerDrag.instance.ReleaseDrag();
+                isDragging = false;
+            }
         }
     }
 

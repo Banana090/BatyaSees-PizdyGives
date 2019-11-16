@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     private SceneObject target;
     private Coroutine currentCoroutine;
     private float moveSpeed;
+    private Transform item;
 
     private void Start()
     {
@@ -22,7 +23,12 @@ public class Enemy : MonoBehaviour
         if (currentCoroutine != null)
             StopCoroutine(currentCoroutine);
 
-        //Go to exit, dissapear;
+        if (item != null)
+        {
+            item.SetParent(null);
+            item.position = transform.position;
+        }
+        
         Destroy(gameObject);
     }
 
@@ -55,7 +61,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator UnwantedObjectsChance()
     {
-        //while (true)
+        while (true)
         {
             yield return new WaitForSeconds(1f);
             if (Random.Range(0f, 1f) < 0.02f)
@@ -73,7 +79,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        Transform item = stack.GetItem();
+        item = stack.GetItem();
         if (item == null) yield break;
 
         item.SetParent(transform);
@@ -89,6 +95,7 @@ public class Enemy : MonoBehaviour
 
         item.SetParent(null);
         item.position = transform.position;
+        item = null;
 
         ObjectsController.FreeObject(target);
         GoWork();
