@@ -63,6 +63,8 @@ public class Enemy : MonoBehaviour
                 case ObjectType.Movable:
                     currentCoroutine = StartCoroutine(WorkWithMovable());
                     break;
+
+                    //MOVE-DESTROY
             }
         }
     }
