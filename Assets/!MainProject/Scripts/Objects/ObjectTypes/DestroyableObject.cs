@@ -5,24 +5,23 @@ using UnityEngine;
 public class DestroyableObject : SceneObject, IInteractableSceneObject
 {
     [Range(0f, 1f)]
-    [SerializeField] private float repairPoints;
-    [SerializeField] private Transform[] sprites;
+    [SerializeField] protected float repairPoints;
+    [SerializeField] protected Transform[] sprites;
 
     private float repairAmount;
 
-    private void Start()
+    protected virtual void Start()
     {
         type = ObjectType.Destroyable;
         RepairFully();
-
-        DestroyObject(); // FOR TEST ONLY
     }
 
-    public void DestroyObject()
+    public virtual void DestroyObject()
     {
         repairAmount = 0;
         sprites[0].gameObject.SetActive(false);
         sprites[1].gameObject.SetActive(true);
+        gameObject.layer = GameManager.instance.interactableLayerInt;
     }
 
     public void Interact()
@@ -30,7 +29,7 @@ public class DestroyableObject : SceneObject, IInteractableSceneObject
         Repair();
     }
 
-    private void Repair()
+    protected void Repair()
     {
         repairAmount += repairPoints;
         if (repairAmount >= 1)
@@ -44,10 +43,11 @@ public class DestroyableObject : SceneObject, IInteractableSceneObject
         }
     }
 
-    private void RepairFully()
+    protected virtual void RepairFully()
     {
         repairAmount = 1;
         sprites[0].gameObject.SetActive(true);
         sprites[1].gameObject.SetActive(false);
+        gameObject.layer = 0;
     }
 }

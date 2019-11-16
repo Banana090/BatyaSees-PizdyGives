@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[ShowOdinSerializedPropertiesInInspector]
-public class GameManager : MonoBehaviour
+public class GameManager : SerializedMonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] public LayerMask interactableObjects;
-    [SerializeField] public LayerMask movableObjects;
+    [SerializeField] public LayerMask interactableObjects { get; private set; }
+    [SerializeField] public int interactableLayerInt { get; private set; }
 
     private void Start()
     {
