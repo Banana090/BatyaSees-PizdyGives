@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
         moveSpeedMultiplier = 1f;
     }
 
@@ -43,6 +42,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void GoAwakeStopSleep()
     {
+        StartCoroutine(StopSleepCoroutine());
+    }
+
+    private IEnumerator StopSleepCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
         canMove = true;
         anim.SetBool("sleep", false);
     }
@@ -50,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator GoSleepCoroutine()
     {
         canMove = false;
+        inputVector = Vector2.zero;
         anim.SetBool("walkRun", true);
         Vector3 moveDir = sleepPoint.position - transform.position;
         moveDir.Normalize();

@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualRoot: {fileID: 1610392277513820707}
   moveSpeed: 3
+  anim: {fileID: 1610392277513820716}
+  sleepPoint: {fileID: 0}
   canMove: 1
   moveSpeedMultiplier: 0
 --- !u!114 &3101644892911594260
@@ -213,6 +215,12 @@ PrefabInstance:
 --- !u!4 &1610392277513820707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4418597097778946663, guid: b82e9a060bab235478f232f1f3bd88a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3101644892964780100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1610392277513820716 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4418597097778946664, guid: b82e9a060bab235478f232f1f3bd88a6,
     type: 3}
   m_PrefabInstance: {fileID: 3101644892964780100}
   m_PrefabAsset: {fileID: 0}

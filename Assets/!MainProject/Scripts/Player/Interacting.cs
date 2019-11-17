@@ -33,6 +33,12 @@ public class Interacting : MonoBehaviour
                 isDragging = false;
             }
         }
+
+        if (!playerMovement.canMove && isDragging)
+        {
+            PlayerDrag.instance.ReleaseDrag();
+            isDragging = false;
+        }
     }
 
     private void CheckForNearestObjects()
