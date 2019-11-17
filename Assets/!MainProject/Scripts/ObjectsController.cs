@@ -42,13 +42,13 @@ public class ObjectsController : MonoBehaviour
 
                 case ObjectType.Movable:
                     MovableObject o = obj as MovableObject;
-                    if ((o.startPosition - o.transform.position).magnitude > 0.35f)
+                    if ((o.startPosition - o.transform.position).magnitude > 0.8f)
                         wrongObjects.Add(obj.transform);
                     break;
 
                 case ObjectType.MovableDestroyable:
                     MovableDestroyableObject mdo = obj as MovableDestroyableObject;
-                    if (mdo.isBroken || (mdo.startPosition - mdo.transform.position).magnitude > 0.35f)
+                    if (mdo.isBroken || (mdo.startPosition - mdo.transform.position).magnitude > 0.8f)
                         wrongObjects.Add(obj.transform);
                     break;
 
