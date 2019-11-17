@@ -36,7 +36,8 @@ public class GameManager : SerializedMonoBehaviour
 
     private PlayerMovement playerMovement;
     private PlayableDirector playableDirector;
-
+    private bool gameIsPlaying = false;
+    private bool kingIsHere = false;
     private void Start()
     {
         if (instance == null)
@@ -47,6 +48,19 @@ public class GameManager : SerializedMonoBehaviour
         playerMovement = FindObjectOfType<PlayerMovement>();
         playableDirector = GetComponent<PlayableDirector>();
         StartCoroutine(LoadSceneFirst());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            if (!kingIsHere && gameIsPlaying)
+            {
+                StopAllCoroutines();
+                StartCoroutine(GameEnd());
+                kingIsHere = true;
+            }
+        }
     }
 
     private IEnumerator LoadSceneFirst()
@@ -73,7 +87,7 @@ public class GameManager : SerializedMonoBehaviour
             yield return null;
         }
 
-        Destroy(king.gameObject);
+        king.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(2f);
         playerMovement.GoSleep();
@@ -83,6 +97,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private IEnumerator GameTimer()
     {
+        gameIsPlaying = true;
         timerAnimator.SetTrigger("Show");
         timerText.text = playingTime.ToString();
         float timeLeft = playingTime;
@@ -94,8 +109,13 @@ public class GameManager : SerializedMonoBehaviour
             yield return null;
         }
 
-        timerText.text = "";
+        StartCoroutine(GameEnd());
+    }
 
+    private IEnumerator GameEnd()
+    {
+        gameIsPlaying = false;
+        timerText.text = "";
         List<Transform> wrongObjects;
         bool isWin = false;
         bool isMistake = false;
@@ -104,14 +124,12 @@ public class GameManager : SerializedMonoBehaviour
         {
             if (wrongObjects.Count == 0)
             {
-                timerNotifyText.text = "<color=orange>PERFECT!</color>";
-                timerText.text = "";
+                timerAnimator.SetTrigger("Hide");
                 isWin = true;
             }
             else
             {
-                timerNotifyText.text = "<color=green>VICTORY!</color> (" + wrongObjects.Count.ToString() + "/" + maxWrongItems.ToString() + " wrong)";
-                timerText.text = "";
+                timerAnimator.SetTrigger("Hide");
                 isWin = true;
                 isMistake = true;
                 List<SpriteRenderer> renderers = new List<SpriteRenderer>();
@@ -139,11 +157,13 @@ public class GameManager : SerializedMonoBehaviour
         else
         {
             //Lost. Highlight wrong objects
-            timerNotifyText.text = "<color=red>DEFEAT</color> (" + wrongObjects.Count.ToString() + "/" + maxWrongItems.ToString() + " wrong)";
-            timerText.text = "";
+            timerAnimator.SetTrigger("Hide");
             List<SpriteRenderer> renderers = new List<SpriteRenderer>();
             foreach (Transform item in wrongObjects)
                 renderers.AddRange(item.GetComponentsInChildren<SpriteRenderer>());
+
+            king.gameObject.SetActive(true);
+            king.Play("SayInEnd");
 
             float t = Time.time;
             while (t + 5f >= Time.time)
@@ -175,12 +195,13 @@ public class GameManager : SerializedMonoBehaviour
             {
                 winScreen.SetTrigger("Show");
             }
-        } else
+        }
+        else
         {
             loseScreen.SetTrigger("Show");
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         blackScreen.SetTrigger("Show");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(0);

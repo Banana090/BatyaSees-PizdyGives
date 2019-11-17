@@ -237,6 +237,86 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7392288165775571260, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392288165775571260, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392288165775571260, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392288165775571260, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392288165775571260, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392288166472852007, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392288166472852007, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392288166472852007, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392288166472852007, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371752949645245977, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 33.55005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8335656455494739741, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 33.55005
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620586822743682461, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620586822743682461, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620586822743682461, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620586822743682461, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620586822743682461, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc, type: 3}
 --- !u!224 &40059613 stripped
@@ -1140,7 +1220,7 @@ MonoBehaviour:
   watchingTime: 7
   attackTime: 16
   enemyCount: 2
-  playingTime: 45
+  playingTime: 90
   maxWrongItems: 1
   wrongMat: {fileID: 2100000, guid: 2cd3d733aad95d44d9d6b64143261708, type: 2}
   normalMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -1768,6 +1848,7 @@ GameObject:
   - component: {fileID: 1863857323}
   - component: {fileID: 1863857324}
   - component: {fileID: 1863857325}
+  - component: {fileID: 1863857326}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -1822,6 +1903,32 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
+--- !u!61 &1863857326
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863857322}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0025760233, y: 0.087584734}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.55177206, y: 0.38175488}
+  m_EdgeRadius: 0
 --- !u!1 &1989996071
 GameObject:
   m_ObjectHideFlags: 0
