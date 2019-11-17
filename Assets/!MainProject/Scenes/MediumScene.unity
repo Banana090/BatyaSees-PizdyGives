@@ -3928,7 +3928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2138217284}
   m_Layer: 0
-  m_Name: "Barrels_\u0425\u043E\u0447\u0443 4"
+  m_Name: Barrels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
