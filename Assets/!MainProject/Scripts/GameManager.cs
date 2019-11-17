@@ -11,6 +11,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private float watchingTime;
     [SerializeField] private float attackTime;
+    [SerializeField] private int enemyCount;
     [SerializeField] private float playingTime;
 
     [SerializeField] public LayerMask interactableObjects { get; private set; }
@@ -40,7 +41,7 @@ public class GameManager : SerializedMonoBehaviour
 
         timerText.text = "";
 
-        EnemyController.instance.StartCoroutine(EnemyController.instance.SpawnEnemies(5, attackTime));
+        EnemyController.instance.StartCoroutine(EnemyController.instance.SpawnEnemies(enemyCount, attackTime));
     }
 
     private IEnumerator GameTimer()

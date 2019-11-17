@@ -17,6 +17,12 @@ public class Enemy : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         moveSpeed = Random.Range(2f, 4.5f);
         StartCoroutine(UnwantedObjectsChance());
+        StartCoroutine(StartWithDelay());
+    }
+
+    private IEnumerator StartWithDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
         GoWork();
     }
 
