@@ -10,6 +10,7 @@ public class GameManager : SerializedMonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private Animator timerAnimator;
     [SerializeField] private float watchingTime;
     [SerializeField] private float attackTime;
     [SerializeField] private int enemyCount;
@@ -68,6 +69,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private IEnumerator GameTimer()
     {
+        timerAnimator.SetTrigger("Show");
         timerText.text = playingTime.ToString();
         float timeLeft = playingTime;
 
