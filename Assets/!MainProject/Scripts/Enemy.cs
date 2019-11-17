@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        moveSpeed = Random.Range(2f, 3.5f);
+        moveSpeed = Random.Range(3f, 5f);
         StartCoroutine(UnwantedObjectsChance());
         StartCoroutine(StartWithDelay());
     }
@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        if (Random.Range(0f, 1f) < 0.73f)
+        if (Random.Range(0f, 1f) < 0.9f)
         {
             Vector3 offset = target.transform.position - transform.position;
             Vector3 moveToPoint = GameManager.GetRandomPointInRoom();
@@ -239,14 +239,8 @@ public class Enemy : MonoBehaviour
         }
 
         anim.SetBool("Run", false);
-        float workingTime = Random.Range(0.2f, 1f);
-        float timeStartedWorking = Time.time;
-
-        while(timeStartedWorking + workingTime >= Time.time)
-        {
-            trigger.Trigger();
-            yield return new WaitForSeconds(Random.Range(0.5f, 2f));
-        }
+        
+        trigger.Trigger();
         ObjectsController.FreeObject(target);
         GoWork();
     }

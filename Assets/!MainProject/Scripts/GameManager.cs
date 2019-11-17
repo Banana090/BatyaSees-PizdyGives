@@ -12,6 +12,7 @@ public class GameManager : SerializedMonoBehaviour
 
     [SerializeField] private Animator blackScreen;
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI timerNotifyText;
     [SerializeField] private Animator timerAnimator;
     [SerializeField] private float watchingTime;
     [SerializeField] private float attackTime;
@@ -97,12 +98,14 @@ public class GameManager : SerializedMonoBehaviour
         {
             if (wrongObjects.Count == 0)
             {
-                timerText.text = "PERFECT";
+                timerNotifyText.text = "<color=orange>PERFECT!</color>";
+                timerText.text = "";
                 yield return new WaitForSeconds(3f);
             }
             else
             {
-                timerText.text = "WIN (" + wrongObjects.Count.ToString() + " mistakes)";
+                timerNotifyText.text = "<color=green>VICTORY!</color> (" + wrongObjects.Count.ToString() + "/" + maxWrongItems.ToString() + " wrong)";
+                timerText.text = "";
 
                 List<SpriteRenderer> renderers = new List<SpriteRenderer>();
                 foreach (Transform item in wrongObjects)
@@ -129,7 +132,8 @@ public class GameManager : SerializedMonoBehaviour
         else
         {
             //Lost. Highlight wrong objects
-            timerText.text = "LOST (" + wrongObjects.Count.ToString() + " mistakes)";
+            timerNotifyText.text = "<color=red>DEFEAT</color> (" + wrongObjects.Count.ToString() + "/" + maxWrongItems.ToString() + " wrong)";
+            timerText.text = "";
             List<SpriteRenderer> renderers = new List<SpriteRenderer>();
             foreach (Transform item in wrongObjects)
                 renderers.AddRange(item.GetComponentsInChildren<SpriteRenderer>());
@@ -152,7 +156,7 @@ public class GameManager : SerializedMonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(7f);
         blackScreen.SetTrigger("Show");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(0);

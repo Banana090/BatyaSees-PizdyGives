@@ -263,6 +263,18 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 40059612}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &40059616 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7392288165775571260, guid: 16b3bc6fbbedf754a8dd6d426f44cbdc,
+    type: 3}
+  m_PrefabInstance: {fileID: 40059612}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &142003634
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +931,7 @@ MonoBehaviour:
       Data: 
   blackScreen: {fileID: 445047858}
   timerText: {fileID: 40059614}
+  timerNotifyText: {fileID: 40059616}
   timerAnimator: {fileID: 40059615}
   watchingTime: 7
   attackTime: 16
