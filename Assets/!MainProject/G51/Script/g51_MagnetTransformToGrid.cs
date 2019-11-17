@@ -11,6 +11,8 @@ public class g51_MagnetTransformToGrid : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (Application.isPlaying)
+            return;
         if (snapStep == 0) return;
         transform.localPosition = RoundVector(transform.localPosition, true);
         transform.localScale = RoundVector(transform.localScale);
