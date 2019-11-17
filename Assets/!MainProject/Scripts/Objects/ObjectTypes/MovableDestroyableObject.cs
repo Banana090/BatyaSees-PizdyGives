@@ -8,6 +8,7 @@ public class MovableDestroyableObject : SceneObject, IInteractableSceneObject
     [SerializeField] private float repairPoints;
     [SerializeField] private Transform[] sprites;
     [SerializeField] private g51_Bar slider;
+    [SerializeField] private SpriteRenderer icon;
 
     private float repairAmount;
 
@@ -19,6 +20,11 @@ public class MovableDestroyableObject : SceneObject, IInteractableSceneObject
         type = ObjectType.MovableDestroyable;
         startPosition = transform.position;
         RepairFully();
+    }
+
+    public void SetIcon(Sprite sp)
+    {
+        icon.sprite = sp;
     }
 
     public void DestroyObject()

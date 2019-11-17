@@ -14,6 +14,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField] private int enemyCount;
     [SerializeField] private float playingTime;
 
+    [SerializeField] private int maxWrongItems;
     [SerializeField] private Material wrongMat;
     [SerializeField] private Material normalMat;
 
@@ -65,14 +66,43 @@ public class GameManager : SerializedMonoBehaviour
 
         List<Transform> wrongObjects;
 
-        if (ObjectsController.CheckForWin(out wrongObjects))
+        if (ObjectsController.CheckForWin(out wrongObjects, maxWrongItems))
         {
-            timerText.text = "WIN";
+            if (wrongObjects.Count == 0)
+            {
+                timerText.text = "PERFECT";
+                yield return new WaitForSeconds(3f);
+            }
+            else
+            {
+                timerText.text = "WIN (" + wrongObjects.Count.ToString() + " mistakes)";
+
+                List<SpriteRenderer> renderers = new List<SpriteRenderer>();
+                foreach (Transform item in wrongObjects)
+                    renderers.AddRange(item.GetComponentsInChildren<SpriteRenderer>());
+
+                float t = Time.time;
+                while (t + 5f >= Time.time)
+                {
+                    foreach (var rend in renderers)
+                    {
+                        if (rend.name == "noColored") continue;
+                        rend.material = wrongMat;
+                    }
+                    yield return new WaitForSeconds(0.5f);
+                    foreach (var rend in renderers)
+                    {
+                        if (rend.name == "noColored") continue;
+                        rend.material = normalMat;
+                    }
+                    yield return new WaitForSeconds(0.5f);
+                }
+            }
         }
         else
         {
             //Lost. Highlight wrong objects
-            timerText.text = "LOST";
+            timerText.text = "LOST (" + wrongObjects.Count.ToString() + " mistakes)";
             List<SpriteRenderer> renderers = new List<SpriteRenderer>();
             foreach (Transform item in wrongObjects)
                 renderers.AddRange(item.GetComponentsInChildren<SpriteRenderer>());
