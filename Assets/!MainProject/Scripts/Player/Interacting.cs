@@ -10,12 +10,18 @@ public class Interacting : MonoBehaviour
     [HideInInspector] public bool isDragging;
 
     private IInteractableSceneObject nearestInteractableObject;
+    private PlayerMovement playerMovement;
+
+    private void Start()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+    }
 
     private void Update()
     {
         CheckForNearestObjects();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && playerMovement.canMove)
         {
             if (!isDragging && nearestInteractableObject != null)
             {

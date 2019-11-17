@@ -18,6 +18,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField] public int interactableLayerInt { get; private set; }
     [SerializeField] public Vector4 roomBorders { get; private set; }
 
+    private PlayerMovement playerMovement;
+
     private void Start()
     {
         if (instance == null)
@@ -25,6 +27,7 @@ public class GameManager : SerializedMonoBehaviour
         else if (instance != this)
             Destroy(this);
 
+        playerMovement = FindObjectOfType<PlayerMovement>();
         DontDestroyOnLoad(gameObject);
         StartCoroutine(StartWatchingTime());
     }
@@ -78,6 +81,7 @@ public class GameManager : SerializedMonoBehaviour
     public static void StartGameTimer()
     {
         instance.StartCoroutine(instance.GameTimer());
+        instance.playerMovement.GoAwakeStopSleep();
     }
 
     public static Vector3 GetRandomPointInRoom()
