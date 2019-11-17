@@ -936,7 +936,7 @@ MonoBehaviour:
   watchingTime: 7
   attackTime: 16
   enemyCount: 2
-  playingTime: 30
+  playingTime: 45
   maxWrongItems: 0
   wrongMat: {fileID: 2100000, guid: 2cd3d733aad95d44d9d6b64143261708, type: 2}
   normalMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
