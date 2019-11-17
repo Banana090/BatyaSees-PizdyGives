@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
             yield break;
         }
 
-        while (Vector2.Distance(transform.position, target.transform.position) > 1f)
+        while (Vector2.Distance(transform.position, target.transform.position) > 0.6f)
         {
             Vector3 moveDir = (target.transform.position - transform.position).normalized;
             transform.position += moveDir * moveSpeed * Time.deltaTime;
@@ -111,11 +111,10 @@ public class Enemy : MonoBehaviour
         if (Random.Range(0f, 1f) < 0.73f)
         {
             Vector3 offset = target.transform.position - transform.position;
-            Vector3 moveTo = (GameManager.GetRandomPointInRoom() - transform.position).normalized;
-            float timeToDrag = Random.Range(1.5f, 5f);
-            float startTime = Time.time;
+            Vector3 moveToPoint = GameManager.GetRandomPointInRoom();
+            Vector3 moveTo = (moveToPoint - transform.position).normalized;
 
-            while (startTime + timeToDrag >= Time.time)
+            while (Vector2.Distance(transform.position, moveToPoint) > 0.5f)
             {
                 transform.position += moveTo * moveSpeed * 0.6f * Time.deltaTime;
                 target.transform.position = transform.position + offset;
@@ -144,7 +143,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator WorkWithMovable()
     {
         anim.SetBool("Run", true);
-        while (Vector2.Distance(transform.position, target.transform.position) > 1f)
+        while (Vector2.Distance(transform.position, target.transform.position) > 0.6f)
         {
             Vector3 moveDir = (target.transform.position - transform.position).normalized;
             transform.position += moveDir * moveSpeed * Time.deltaTime;
@@ -153,11 +152,10 @@ public class Enemy : MonoBehaviour
         }
 
         Vector3 offset = target.transform.position - transform.position;
-        Vector3 moveTo = (GameManager.GetRandomPointInRoom() - transform.position).normalized;
-        float timeToDrag = Random.Range(2.1f, 5f);
-        float startTime = Time.time;
+        Vector3 moveToPoint = GameManager.GetRandomPointInRoom();
+        Vector3 moveTo = (moveToPoint - transform.position).normalized;
 
-        while (startTime + timeToDrag >= Time.time)
+        while (Vector2.Distance(transform.position, moveToPoint) > 0.5f)
         {
             transform.position += moveTo * moveSpeed * 0.6f * Time.deltaTime;
             target.transform.position = transform.position + offset;
@@ -189,7 +187,7 @@ public class Enemy : MonoBehaviour
 
         Vector3 targetPoint = GameManager.GetRandomPointInRoom();
 
-        while (Vector2.Distance(transform.position, targetPoint) > 0.5f)
+        while (Vector2.Distance(transform.position, targetPoint) > 0.8f)
         {
             Vector3 moveDir = (targetPoint - transform.position).normalized;
             transform.position += moveDir * moveSpeed * Time.deltaTime;
