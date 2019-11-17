@@ -414,7 +414,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   timerText: {fileID: 1846249708}
-  watchingTime: 10
+  watchingTime: 5
   attackTime: 9
   enemyCount: 2
   playingTime: 30
