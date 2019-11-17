@@ -4,11 +4,13 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class GameManager : SerializedMonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField] private Animator blackScreen;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private Animator timerAnimator;
     [SerializeField] private float watchingTime;
@@ -39,6 +41,13 @@ public class GameManager : SerializedMonoBehaviour
 
         playerMovement = FindObjectOfType<PlayerMovement>();
         playableDirector = GetComponent<PlayableDirector>();
+        StartCoroutine(LoadSceneFirst());
+    }
+
+    private IEnumerator LoadSceneFirst()
+    {
+        blackScreen.SetTrigger("Hide");
+        yield return new WaitForSeconds(0.8f);
         StartCoroutine(StartWatchingTime());
     }
 
@@ -143,7 +152,10 @@ public class GameManager : SerializedMonoBehaviour
             }
         }
 
-        //EXIT TO MENU
+        yield return new WaitForSeconds(3f);
+        blackScreen.SetTrigger("Show");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(0);
     }
 
     public static void StartGameTimer()

@@ -29,28 +29,31 @@ public class ObjectsController : MonoBehaviour
         for (int i = 0; i < sceneObjects.Count; i++)
             isObjectFree.Add(true);
 
-        Stack<int> barrelIndexes = new Stack<int>();
-        for (int i = 0; i < barrels.Length; i++)
-            barrelIndexes.Push(i);
-
-        barrelIndexes = new Stack<int>(barrelIndexes.OrderBy(x => Random.value));
-
-        foreach (var item in barrels)
-            item.gameObject.SetActive(false);
-
-        for (int i = 0; i < barrelsOnLevel; i++)
-            barrels[barrelIndexes.Pop()].gameObject.SetActive(true);
-
-        Stack<int> iconIndexes = new Stack<int>();
-        for (int i = 0; i < barrelIcons.Length; i++)
-            iconIndexes.Push(i);
-
-        iconIndexes = new Stack<int>(iconIndexes.OrderBy(x => Random.value));
-
-        for (int i = 0; i < barrels.Length; i++)
+        if (barrelsOnLevel > 0)
         {
-            if (barrels[i].gameObject.activeSelf)
-                barrels[i].SetIcon(barrelIcons[iconIndexes.Pop()]);
+            Stack<int> barrelIndexes = new Stack<int>();
+            for (int i = 0; i < barrels.Length; i++)
+                barrelIndexes.Push(i);
+
+            barrelIndexes = new Stack<int>(barrelIndexes.OrderBy(x => Random.value));
+
+            foreach (var item in barrels)
+                item.gameObject.SetActive(false);
+
+            for (int i = 0; i < barrelsOnLevel; i++)
+                barrels[barrelIndexes.Pop()].gameObject.SetActive(true);
+
+            Stack<int> iconIndexes = new Stack<int>();
+            for (int i = 0; i < barrelIcons.Length; i++)
+                iconIndexes.Push(i);
+
+            iconIndexes = new Stack<int>(iconIndexes.OrderBy(x => Random.value));
+
+            for (int i = 0; i < barrels.Length; i++)
+            {
+                if (barrels[i].gameObject.activeSelf)
+                    barrels[i].SetIcon(barrelIcons[iconIndexes.Pop()]);
+            }
         }
     }
 

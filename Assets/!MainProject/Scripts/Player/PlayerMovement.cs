@@ -53,8 +53,9 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator StopSleepCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        canMove = true;
         anim.SetBool("sleep", false);
+        yield return new WaitForSeconds(1f);
+        canMove = true;
     }
 
     private IEnumerator GoSleepCoroutine()

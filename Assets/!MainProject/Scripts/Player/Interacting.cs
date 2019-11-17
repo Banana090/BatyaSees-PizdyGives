@@ -24,7 +24,8 @@ public class Interacting : MonoBehaviour
 
     private void Update()
     {
-        CheckForNearestObjects();
+        if (playerMovement.canMove)
+            CheckForNearestObjects();
 
         if (showSpaceHint)
             spaceAnim.SetBool("Space", nearestInteractableObject != null && !isDragging);

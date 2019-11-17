@@ -14,28 +14,23 @@ public class MenuManager : MonoBehaviour
 
     public void LoadEasy()
     {
-        StartCoroutine(FadeIn("Easy"));
+        StartCoroutine(FadeIn(1));
     }
 
     public void LoadMedium()
     {
-
+        StartCoroutine(FadeIn(2));
     }
 
     public void LoadHard()
     {
-
+        StartCoroutine(FadeIn(3));
     }
 
-    public void LoadTutorial()
-    {
-
-    }
-
-    private IEnumerator FadeIn(string sceneName)
+    private IEnumerator FadeIn(int sceneID)
     {
         blackScreen.SetTrigger("Show");
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneID);
     }
 }
