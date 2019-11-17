@@ -13,4 +13,9 @@ public class UnwantedObject : SceneObject, IInteractableSceneObject
     {
         Destroy(gameObject);
     }
+
+    public Transform GetThisTransform()
+    {
+        return transform;
+    }
 }

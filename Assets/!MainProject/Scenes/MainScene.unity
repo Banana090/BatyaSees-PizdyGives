@@ -2482,8 +2482,17 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 348565314404818942, guid: cc70bee0aef36c648901e782c6e8de46,
+      objectReference: {fileID: 0}
+    - target: {fileID: 348565314404818942, guid: cc70bee0aef36c648901e782c6e8de46,
         type: 3}
+      propertyPath: hMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 2cd3d733aad95d44d9d6b64143261708, type: 2}
+    - target: {fileID: 348565314404818942, guid: cc70bee0aef36c648901e782c6e8de46,
+        type: 3}
+      propertyPath: nMat
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc70bee0aef36c648901e782c6e8de46, type: 3}
 --- !u!4 &1834949537 stripped
@@ -3897,7 +3906,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 3837603179830076097, guid: 5a60755d108dcd44992a15a2f81489ef,
+      objectReference: {fileID: 7519297937124091835, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
     - target: {fileID: 3349646711793264396, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
@@ -4018,7 +4027,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 3837603179029714892, guid: 5a60755d108dcd44992a15a2f81489ef,
+      objectReference: {fileID: 7519297937124091835, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
     - target: {fileID: 3349646711793264396, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
@@ -4144,7 +4153,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 3837603179314292415, guid: 5a60755d108dcd44992a15a2f81489ef,
+      objectReference: {fileID: 7519297937124091835, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
     - target: {fileID: 3349646711793264396, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
@@ -4275,7 +4284,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 3837603178611977024, guid: 5a60755d108dcd44992a15a2f81489ef,
+      objectReference: {fileID: 7519297937124091835, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
     - target: {fileID: 3349646711793264396, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
@@ -4406,7 +4415,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 3837603178678409362, guid: 5a60755d108dcd44992a15a2f81489ef,
+      objectReference: {fileID: 7519297937124091835, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
     - target: {fileID: 3349646711793264396, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
@@ -4522,7 +4531,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 3837603178919783799, guid: 5a60755d108dcd44992a15a2f81489ef,
+      objectReference: {fileID: 7519297937124091835, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8bfe78526c1644c86025852f4cc6b2, type: 3}
@@ -4603,7 +4612,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 3837603178307605781, guid: 5a60755d108dcd44992a15a2f81489ef,
+      objectReference: {fileID: 7519297937124091835, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8bfe78526c1644c86025852f4cc6b2, type: 3}
@@ -4689,7 +4698,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 3837603178260800273, guid: 5a60755d108dcd44992a15a2f81489ef,
+      objectReference: {fileID: 7519297937124091835, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
     - target: {fileID: 3349646711793264396, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}

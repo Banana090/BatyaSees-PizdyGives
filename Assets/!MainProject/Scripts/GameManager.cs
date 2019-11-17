@@ -57,7 +57,7 @@ public class GameManager : SerializedMonoBehaviour
         while (timeLeft > 0)
         {
             timerText.text = ((int)timeLeft).ToString();
-            timeLeft -= timeLeft <= 3 ? Time.deltaTime / 2 : Time.deltaTime;
+            timeLeft -= timeLeft <= 3 ? Time.deltaTime * 0.75f : Time.deltaTime;
             yield return null;
         }
 
