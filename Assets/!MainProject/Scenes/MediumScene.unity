@@ -1663,7 +1663,7 @@ PrefabInstance:
     - target: {fileID: 4943733850409866658, guid: d4c68bd0edfa8394e9669e93d81fee30,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4943733849296639912, guid: d4c68bd0edfa8394e9669e93d81fee30,
         type: 3}
@@ -1728,18 +1728,48 @@ PrefabInstance:
     - target: {fileID: 4943733849004432139, guid: d4c68bd0edfa8394e9669e93d81fee30,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4943733849428229354, guid: d4c68bd0edfa8394e9669e93d81fee30,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c68bd0edfa8394e9669e93d81fee30, type: 3}
 --- !u!224 &832340874 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4943733850588445106, guid: d4c68bd0edfa8394e9669e93d81fee30,
+    type: 3}
+  m_PrefabInstance: {fileID: 832340873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &832340875 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4943733849296639912, guid: d4c68bd0edfa8394e9669e93d81fee30,
+    type: 3}
+  m_PrefabInstance: {fileID: 832340873}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &832340876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4943733849691966643, guid: d4c68bd0edfa8394e9669e93d81fee30,
+    type: 3}
+  m_PrefabInstance: {fileID: 832340873}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &832340877 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4943733850588445105, guid: d4c68bd0edfa8394e9669e93d81fee30,
     type: 3}
   m_PrefabInstance: {fileID: 832340873}
   m_PrefabAsset: {fileID: 0}
@@ -2117,8 +2147,10 @@ MonoBehaviour:
       Entry: 8
       Data: 
   blackScreen: {fileID: 319819103}
-  winScreen: {fileID: 0}
-  loseScreen: {fileID: 0}
+  winScreen: {fileID: 832340877}
+  winScreenTitle: {fileID: 832340876}
+  winScreenDesc: {fileID: 832340875}
+  loseScreen: {fileID: 1994001565}
   timerText: {fileID: 1923241932}
   timerNotifyText: {fileID: 1923241934}
   timerAnimator: {fileID: 1923241933}
@@ -4059,6 +4091,12 @@ PrefabInstance:
 --- !u!224 &1994001564 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3815577758672862654, guid: 076d17c266d06314aa90f6be06351952,
+    type: 3}
+  m_PrefabInstance: {fileID: 1994001563}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1994001565 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6494604545241574117, guid: 076d17c266d06314aa90f6be06351952,
     type: 3}
   m_PrefabInstance: {fileID: 1994001563}
   m_PrefabAsset: {fileID: 0}
