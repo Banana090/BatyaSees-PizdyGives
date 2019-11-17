@@ -35,12 +35,14 @@ public class MovableDestroyableObject : SceneObject, IInteractableSceneObject
         isBroken = true;
     }
 
-    public void Interact()
+    public bool Interact()
     {
         if (isBroken)
             Repair();
         else
             PlayerDrag.instance.SetDragObject(transform);
+
+        return false;
     }
 
     private void Repair()

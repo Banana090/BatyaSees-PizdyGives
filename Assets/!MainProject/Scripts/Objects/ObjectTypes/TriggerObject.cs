@@ -27,9 +27,10 @@ public sealed class TriggerObject : SceneObject, IInteractableSceneObject
         SetTrigger(currentIndex);
     }
 
-    public void Interact()
+    public bool Interact()
     {
         Trigger();
+        return false;
     }
 
     private void SetTrigger(int index)

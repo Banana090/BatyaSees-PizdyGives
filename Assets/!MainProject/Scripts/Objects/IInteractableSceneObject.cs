@@ -2,6 +2,6 @@
 
 public interface IInteractableSceneObject
 {
-    void Interact();
+    bool Interact();
     Transform GetThisTransform();
 }

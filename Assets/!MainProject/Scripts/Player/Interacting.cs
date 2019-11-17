@@ -33,7 +33,8 @@ public class Interacting : MonoBehaviour
         {
             if (!isDragging && nearestInteractableObject != null)
             {
-                nearestInteractableObject.Interact();
+                if (nearestInteractableObject.Interact())
+                    nearestInteractableObject = null;
             }
             else if (isDragging)
             {

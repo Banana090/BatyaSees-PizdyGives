@@ -9,9 +9,10 @@ public class UnwantedObject : SceneObject, IInteractableSceneObject
         type = ObjectType.Unwanted;
     }
 
-    public void Interact()
+    public bool Interact()
     {
         Destroy(gameObject);
+        return true;
     }
 
     public Transform GetThisTransform()
