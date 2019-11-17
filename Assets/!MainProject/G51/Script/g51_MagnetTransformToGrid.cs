@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class g51_MagnetTransformToGrid : MonoBehaviour
 {
-    
+#if UNITY_EDITOR
     public float snapStep = 1f;
 
     private void LateUpdate()
@@ -33,5 +33,6 @@ public class g51_MagnetTransformToGrid : MonoBehaviour
         float g = _pos ? snapStep / 2f : snapStep;
         return Mathf.RoundToInt(value / g) * g;
     }
-}
 #endif
+}
+
