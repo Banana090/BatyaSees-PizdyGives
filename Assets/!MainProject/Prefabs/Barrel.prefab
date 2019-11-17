@@ -361,8 +361,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8966015071342763463}
-  - component: {fileID: 278081962478024896}
   - component: {fileID: 7767146376841412759}
+  - component: {fileID: 1011722724539349038}
   m_Layer: 8
   m_Name: Barrel
   m_TagString: Untagged
@@ -385,32 +385,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &278081962478024896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8966015071342763460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f9b20dbe670adf40adc1911012cd5c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  repairPoints: 0.1
-  sprites:
-  - {fileID: 8942388721565294302}
-  - {fileID: 7521937819045516395}
-  slider: {fileID: 7225735403462211435}
 --- !u!61 &7767146376841412759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -437,6 +411,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7269769, y: 0.41982603}
   m_EdgeRadius: 0
+--- !u!114 &1011722724539349038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8966015071342763460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f080c2dd1484ccc43af32a3da639cd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  repairPoints: 0.07
+  sprites:
+  - {fileID: 8942388721565294302}
+  - {fileID: 7521937819045516395}
+  slider: {fileID: 7225735403462211435}
 --- !u!1 &8966015072013698134
 GameObject:
   m_ObjectHideFlags: 0

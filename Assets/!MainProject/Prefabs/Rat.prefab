@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleUnwantedObjects:
-  - {fileID: 5743575129104365082, guid: 26e77f403c162214e9cd4bb8040ef6ae, type: 3}
+  - {fileID: 9167414652070878812, guid: aabdbe2cf8ae34343a77aa9000db0235, type: 3}
 --- !u!1 &8754489310879587670
 GameObject:
   m_ObjectHideFlags: 0

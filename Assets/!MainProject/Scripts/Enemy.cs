@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        moveSpeed = Random.Range(2f, 4.5f);
+        moveSpeed = Random.Range(2f, 3.5f);
         StartCoroutine(UnwantedObjectsChance());
         StartCoroutine(StartWithDelay());
     }
@@ -28,8 +28,7 @@ public class Enemy : MonoBehaviour
 
     public void StopWorkingGoAway()
     {
-        if (currentCoroutine != null)
-            StopCoroutine(currentCoroutine);
+        StopAllCoroutines();
 
         if (item != null)
         {
@@ -70,7 +69,9 @@ public class Enemy : MonoBehaviour
                     currentCoroutine = StartCoroutine(WorkWithMovable());
                     break;
 
-                    //MOVE-DESTROY
+                case ObjectType.MovableDestroyable:
+                    currentCoroutine = StartCoroutine(WorkWithMovableDestroyable());
+                    break;
             }
         }
     }
@@ -79,10 +80,65 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
-            if (Random.Range(0f, 1f) < 0.02f)
+            yield return new WaitForSeconds(0.6f);
+            if (Random.Range(0f, 1f) < 0.032f)
                 Instantiate(possibleUnwantedObjects[Random.Range(0, possibleUnwantedObjects.Length)], transform.position, Quaternion.identity);
         }
+    }
+
+    private IEnumerator WorkWithMovableDestroyable()
+    {
+        anim.SetBool("Run", true);
+
+        MovableDestroyableObject mdo = target as MovableDestroyableObject;
+
+        if (mdo.isBroken)
+        {
+            anim.SetBool("Run", false);
+            ObjectsController.FreeObject(target);
+            GoWork();
+            yield break;
+        }
+
+        while (Vector2.Distance(transform.position, target.transform.position) > 1f)
+        {
+            Vector3 moveDir = (target.transform.position - transform.position).normalized;
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+            transform.localScale = new Vector3(Mathf.Sign(moveDir.x), 1, 1);
+            yield return null;
+        }
+
+        if (Random.Range(0f, 1f) < 0.73f)
+        {
+            Vector3 offset = target.transform.position - transform.position;
+            Vector3 moveTo = (GameManager.GetRandomPointInRoom() - transform.position).normalized;
+            float timeToDrag = Random.Range(1f, 2.3f);
+            float startTime = Time.time;
+
+            while (startTime + timeToDrag >= Time.time)
+            {
+                transform.position += moveTo * moveSpeed * 0.3f * Time.deltaTime;
+                target.transform.position = transform.position + offset;
+                yield return null;
+            }
+
+            anim.SetBool("Run", false);
+
+            if (Random.Range(0f, 1f) < 0.2f)
+            {
+                yield return new WaitForSeconds(Random.Range(1f, 1.6f));
+                mdo.DestroyObject();
+            }
+
+        } else
+        {
+            anim.SetBool("Run", false);
+            yield return new WaitForSeconds(Random.Range(1f, 1.6f));
+            mdo.DestroyObject();
+        }
+
+        ObjectsController.FreeObject(target);
+        GoWork();
     }
 
     private IEnumerator WorkWithMovable()
@@ -98,7 +154,7 @@ public class Enemy : MonoBehaviour
 
         Vector3 offset = target.transform.position - transform.position;
         Vector3 moveTo = (GameManager.GetRandomPointInRoom() - transform.position).normalized;
-        float timeToDrag = Random.Range(1.5f, 3f);
+        float timeToDrag = Random.Range(1f, 2.3f);
         float startTime = Time.time;
 
         while (startTime + timeToDrag >= Time.time)
@@ -138,6 +194,7 @@ public class Enemy : MonoBehaviour
             Vector3 moveDir = (targetPoint - transform.position).normalized;
             transform.position += moveDir * moveSpeed * Time.deltaTime;
             transform.localScale = new Vector3(Mathf.Sign(moveDir.x), 1, 1);
+            yield return null;
         }
 
         item.SetParent(null);
@@ -163,7 +220,7 @@ public class Enemy : MonoBehaviour
         }
 
         anim.SetBool("Run", false);
-        yield return new WaitForSeconds(Random.Range(1.5f, 3f));
+        yield return new WaitForSeconds(Random.Range(1f, 1.6f));
 
         destroyable.DestroyObject();
         ObjectsController.FreeObject(target);
@@ -184,7 +241,7 @@ public class Enemy : MonoBehaviour
         }
 
         anim.SetBool("Run", false);
-        float workingTime = Random.Range(1f, 2.5f);
+        float workingTime = Random.Range(0.2f, 1f);
         float timeStartedWorking = Time.time;
 
         while(timeStartedWorking + workingTime >= Time.time)
