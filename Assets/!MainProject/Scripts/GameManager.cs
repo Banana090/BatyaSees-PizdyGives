@@ -14,6 +14,9 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField] private int enemyCount;
     [SerializeField] private float playingTime;
 
+    [SerializeField] private Material wrongMat;
+    [SerializeField] private Material normalMat;
+
     [SerializeField] public LayerMask interactableObjects { get; private set; }
     [SerializeField] public int interactableLayerInt { get; private set; }
     [SerializeField] public Vector4 roomBorders { get; private set; }
@@ -28,7 +31,6 @@ public class GameManager : SerializedMonoBehaviour
             Destroy(this);
 
         playerMovement = FindObjectOfType<PlayerMovement>();
-        DontDestroyOnLoad(gameObject);
         StartCoroutine(StartWatchingTime());
     }
 
@@ -55,7 +57,7 @@ public class GameManager : SerializedMonoBehaviour
         while (timeLeft > 0)
         {
             timerText.text = ((int)timeLeft).ToString();
-            timeLeft -= timeLeft <= 3 ? Time.deltaTime / 2 : Time.deltaTime;
+            timeLeft -= timeLeft <= 3 ? Time.deltaTime * 0.75f : Time.deltaTime;
             yield return null;
         }
 
@@ -71,11 +73,29 @@ public class GameManager : SerializedMonoBehaviour
         {
             //Lost. Highlight wrong objects
             timerText.text = "LOST";
-            foreach (var item in wrongObjects)
+            List<SpriteRenderer> renderers = new List<SpriteRenderer>();
+            foreach (Transform item in wrongObjects)
+                renderers.AddRange(item.GetComponentsInChildren<SpriteRenderer>());
+
+            float t = Time.time;
+            while (t + 5f >= Time.time)
             {
-                Debug.Log(item.name);
+                foreach (var rend in renderers)
+                {
+                    if (rend.name == "noColored") continue;
+                    rend.material = wrongMat;
+                }
+                yield return new WaitForSeconds(0.5f);
+                foreach (var rend in renderers)
+                {
+                    if (rend.name == "noColored") continue;
+                    rend.material = normalMat;
+                }
+                yield return new WaitForSeconds(0.5f);
             }
         }
+
+        //EXIT TO MENU
     }
 
     public static void StartGameTimer()

@@ -116,6 +116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 1
   offset: {x: 0, y: 0, z: 0}
+  highlightMat: {fileID: 2100000, guid: 0b25c20c5267a774cb7e2319956fb882, type: 2}
+  normalMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   isDragging: 0
 --- !u!114 &3101644892911594256
 MonoBehaviour:

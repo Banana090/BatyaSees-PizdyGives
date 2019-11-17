@@ -49,4 +49,9 @@ public class DestroyableObject : SceneObject, IInteractableSceneObject
         gameObject.layer = 0;
         slider.gameObject.SetActive(false);
     }
+
+    public Transform GetThisTransform()
+    {
+        return transform;
+    }
 }

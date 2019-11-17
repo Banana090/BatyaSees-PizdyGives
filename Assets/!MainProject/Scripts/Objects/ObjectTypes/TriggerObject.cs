@@ -37,4 +37,9 @@ public sealed class TriggerObject : SceneObject, IInteractableSceneObject
         for (int i = 0; i < states.Length; i++)
             states[i].gameObject.SetActive(i == currentIndex);
     }
+
+    public Transform GetThisTransform()
+    {
+        return transform;
+    }
 }

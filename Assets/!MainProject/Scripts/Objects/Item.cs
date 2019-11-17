@@ -10,4 +10,9 @@ public class Item : MonoBehaviour, IInteractableSceneObject
     {
         PlayerPickup.instance.PickupItem(this);
     }
+
+    public Transform GetThisTransform()
+    {
+        return transform;
+    }
 }

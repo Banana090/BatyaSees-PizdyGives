@@ -55,4 +55,9 @@ public class MovableDestroyableObject : SceneObject, IInteractableSceneObject
         isBroken = false;
         slider.gameObject.SetActive(false);
     }
+
+    public Transform GetThisTransform()
+    {
+        return transform;
+    }
 }

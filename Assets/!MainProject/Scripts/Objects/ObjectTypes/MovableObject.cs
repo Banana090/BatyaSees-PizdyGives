@@ -16,4 +16,9 @@ public sealed class MovableObject : SceneObject, IInteractableSceneObject
     {
         PlayerDrag.instance.SetDragObject(transform);
     }
+
+    public Transform GetThisTransform()
+    {
+        return transform;
+    }
 }

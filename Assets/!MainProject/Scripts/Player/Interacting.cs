@@ -7,6 +7,9 @@ public class Interacting : MonoBehaviour
     [SerializeField] private float radius;
     [SerializeField] private Vector3 offset;
 
+    [SerializeField] private Material highlightMat;
+    [SerializeField] private Material normalMat;
+
     [HideInInspector] public bool isDragging;
 
     private IInteractableSceneObject nearestInteractableObject;
@@ -65,10 +68,36 @@ public class Interacting : MonoBehaviour
                 }
             }
 
+            if (nearestInteractableObject != null)
+            {
+                SpriteRenderer[] r = nearestInteractableObject.GetThisTransform().GetComponentsInChildren<SpriteRenderer>();
+                foreach (var item in r)
+                {
+                    if (item.name == "noColored") continue;
+                    item.material = normalMat;
+                }
+            }
+
             nearestInteractableObject = nearestCollider.GetComponent<IInteractableSceneObject>();
+
+            SpriteRenderer[] renderers = nearestInteractableObject.GetThisTransform().GetComponentsInChildren<SpriteRenderer>();
+            foreach (var item in renderers)
+            {
+                if (item.name == "noColored") continue;
+                item.material = highlightMat;
+            }
         }
         else
         {
+            if (nearestInteractableObject != null)
+            {
+                SpriteRenderer[] renderers = nearestInteractableObject.GetThisTransform().GetComponentsInChildren<SpriteRenderer>();
+                foreach (var item in renderers)
+                {
+                    if (item.name == "noColored") continue;
+                    item.material = normalMat;
+                }
+            }
             nearestInteractableObject = null;
         }
     }
