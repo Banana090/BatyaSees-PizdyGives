@@ -125,7 +125,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4943733849004432141}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041A\u043E\u0440\u043E\u043B\u044C \u043A \u043D\u0438\u0447\u0435\u0433\u043E
+  m_text: "\u041A\u043E\u0440\u043E\u043B\u044C \u0442\u0430\u043A \u043D\u0438\u0447\u0435\u0433\u043E
     \u043D\u0435 \u0437\u0430\u043C\u0435\u0442\u0438\u043B."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ad0e3d8338c96d488e9102b44ebe05d, type: 2}
@@ -277,10 +277,10 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -10.999451, y: 0, z: -17.284546, w: 0}
   m_textInfo:
     textComponent: {fileID: 4943733849296639912}
-    characterCount: 27
+    characterCount: 29
     spriteCount: 0
     spaceCount: 4
     wordCount: 5
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4943733849428229356}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -410,7 +410,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 20}
+  m_AnchoredPosition: {x: 0, y: 71}
   m_SizeDelta: {x: 608, y: 87.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4943733849691966642
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0422\u0410\u041A \u0414\u0415\u0420\u0416\u0410\u0422\u042C!"
+  m_text: "\u041F\u0420\u0415\u0412\u041E\u0421\u0425\u041E\u0414\u041D\u041E!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ad0e3d8338c96d488e9102b44ebe05d, type: 2}
   m_sharedMaterial: {fileID: 1407196248108712764, guid: 5ad0e3d8338c96d488e9102b44ebe05d,
@@ -511,8 +511,8 @@ MonoBehaviour:
     textComponent: {fileID: 4943733849691966643}
     characterCount: 12
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1

@@ -11,6 +11,10 @@ public class GameManager : SerializedMonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private Animator blackScreen;
+    [SerializeField] private Animator winScreen;
+    [SerializeField] private TextMeshProUGUI winScreenTitle;
+    [SerializeField] private TextMeshProUGUI winScreenDesc;
+    [SerializeField] private Animator loseScreen;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI timerNotifyText;
     [SerializeField] private Animator timerAnimator;
@@ -93,6 +97,8 @@ public class GameManager : SerializedMonoBehaviour
         timerText.text = "";
 
         List<Transform> wrongObjects;
+        bool isWin = false;
+        bool isMistake = false;
 
         if (ObjectsController.CheckForWin(out wrongObjects, maxWrongItems))
         {
@@ -100,13 +106,14 @@ public class GameManager : SerializedMonoBehaviour
             {
                 timerNotifyText.text = "<color=orange>PERFECT!</color>";
                 timerText.text = "";
-                yield return new WaitForSeconds(3f);
+                isWin = true;
             }
             else
             {
                 timerNotifyText.text = "<color=green>VICTORY!</color> (" + wrongObjects.Count.ToString() + "/" + maxWrongItems.ToString() + " wrong)";
                 timerText.text = "";
-
+                isWin = true;
+                isMistake = true;
                 List<SpriteRenderer> renderers = new List<SpriteRenderer>();
                 foreach (Transform item in wrongObjects)
                     renderers.AddRange(item.GetComponentsInChildren<SpriteRenderer>());
@@ -156,7 +163,24 @@ public class GameManager : SerializedMonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(3f);
+        if (isWin)
+        {
+            if (isMistake)
+            {
+                winScreenTitle.text = "<color=orange>Ну такое...</color>";
+                winScreenDesc.text = "Король заметил небольшой беспорядок. В этом месяце вас не покормят";
+                winScreen.SetTrigger("Show");
+            }
+            else
+            {
+                winScreen.SetTrigger("Show");
+            }
+        } else
+        {
+            loseScreen.SetTrigger("Show");
+        }
+
+        yield return new WaitForSeconds(2f);
         blackScreen.SetTrigger("Show");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(0);
