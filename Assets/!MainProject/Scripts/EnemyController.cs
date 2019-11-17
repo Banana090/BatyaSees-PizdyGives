@@ -7,7 +7,6 @@ public class EnemyController : MonoBehaviour
     public static EnemyController instance;
 
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private Transform[] spawnPoints;
 
     private Stack<Enemy> enemies;
     private PlayerMovement playerMovement;
@@ -30,7 +29,7 @@ public class EnemyController : MonoBehaviour
         float currentTime = Time.time;
         for (int i = 0; i < count; i++)
         {
-            enemies.Push(Instantiate(enemyPrefab, spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity, transform).GetComponent<Enemy>());
+            enemies.Push(Instantiate(enemyPrefab, GameManager.GetRandomPointInRoom(), Quaternion.identity, transform).GetComponent<Enemy>());
             yield return new WaitForSeconds(Random.Range(0.1f, 0.75f));
         }
 

@@ -7,8 +7,13 @@ public class ObjectsController : MonoBehaviour
 {
     public static ObjectsController instance;
 
+    [SerializeField] private MovableDestroyableObject[] barrels;
+    [SerializeField] private Sprite[] barrelIcons;
+    [SerializeField] private int barrelsOnLevel;
+
     private List<SceneObject> sceneObjects;
     private List<bool> isObjectFree; 
+
 
     private void Start()
     {
@@ -23,9 +28,33 @@ public class ObjectsController : MonoBehaviour
         sceneObjects.AddRange(FindObjectsOfType<SceneObject>().Where(x => x.gameObject.activeInHierarchy));
         for (int i = 0; i < sceneObjects.Count; i++)
             isObjectFree.Add(true);
+
+        Stack<int> barrelIndexes = new Stack<int>();
+        for (int i = 0; i < barrels.Length; i++)
+            barrelIndexes.Push(i);
+
+        barrelIndexes = new Stack<int>(barrelIndexes.OrderBy(x => Random.value));
+
+        foreach (var item in barrels)
+            item.gameObject.SetActive(false);
+
+        for (int i = 0; i < barrelsOnLevel; i++)
+            barrels[barrelIndexes.Pop()].gameObject.SetActive(true);
+
+        Stack<int> iconIndexes = new Stack<int>();
+        for (int i = 0; i < barrelIcons.Length; i++)
+            iconIndexes.Push(i);
+
+        iconIndexes = new Stack<int>(iconIndexes.OrderBy(x => Random.value));
+
+        for (int i = 0; i < barrels.Length; i++)
+        {
+            if (barrels[i].gameObject.activeSelf)
+                barrels[i].SetIcon(barrelIcons[iconIndexes.Pop()]);
+        }
     }
 
-    public static bool CheckForWin(out List<Transform> wrongObjects)
+    public static bool CheckForWin(out List<Transform> wrongObjects, int maxWrongItems)
     {
         wrongObjects = new List<Transform>();
 
@@ -68,7 +97,7 @@ public class ObjectsController : MonoBehaviour
         foreach (var item in u)
             wrongObjects.Add(item.transform);
 
-        return wrongObjects.Count <= 0;
+        return wrongObjects.Count <= maxWrongItems;
     }
 
     public static SceneObject GetFreeObject()

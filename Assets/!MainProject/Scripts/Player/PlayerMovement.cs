@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform visualRoot;
     [SerializeField] private float moveSpeed;
     [SerializeField] private Animator anim;
-    [SerializeField] private Transform sleepPoint;
+    [SerializeField] private Vector3 sleepPoint;
 
     [HideInInspector] public bool canMove = true;
     [HideInInspector] public float moveSpeedMultiplier;
@@ -19,6 +19,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         moveSpeedMultiplier = 1f;
+    }
+
+    private void Start()
+    {
+        sleepPoint = transform.position;
     }
 
     private void Update()
@@ -57,10 +62,10 @@ public class PlayerMovement : MonoBehaviour
         canMove = false;
         inputVector = Vector2.zero;
         anim.SetBool("walkRun", true);
-        Vector3 moveDir = sleepPoint.position - transform.position;
+        Vector3 moveDir = sleepPoint - transform.position;
         moveDir.Normalize();
         visualRoot.localScale = new Vector3(Mathf.Sign(moveDir.x), 1, 1);
-        while (Vector2.Distance(transform.position, sleepPoint.position) > 0.3f)
+        while (Vector2.Distance(transform.position, sleepPoint) > 0.3f)
         {
             transform.position += moveDir * moveSpeed * Time.deltaTime;
             yield return null;

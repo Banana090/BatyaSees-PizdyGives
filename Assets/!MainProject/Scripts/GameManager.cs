@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using TMPro;
+using UnityEngine.Playables;
 
 public class GameManager : SerializedMonoBehaviour
 {
@@ -14,14 +15,19 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField] private int enemyCount;
     [SerializeField] private float playingTime;
 
+    [SerializeField] private int maxWrongItems;
     [SerializeField] private Material wrongMat;
     [SerializeField] private Material normalMat;
+
+    [SerializeField] private Animator king;
+    [SerializeField] private Transform kingTargetPoint;
 
     [SerializeField] public LayerMask interactableObjects { get; private set; }
     [SerializeField] public int interactableLayerInt { get; private set; }
     [SerializeField] public Vector4 roomBorders { get; private set; }
 
     private PlayerMovement playerMovement;
+    private PlayableDirector playableDirector;
 
     private void Start()
     {
@@ -31,20 +37,31 @@ public class GameManager : SerializedMonoBehaviour
             Destroy(this);
 
         playerMovement = FindObjectOfType<PlayerMovement>();
+        playableDirector = GetComponent<PlayableDirector>();
         StartCoroutine(StartWatchingTime());
     }
 
     private IEnumerator StartWatchingTime()
     {
-        float timer = watchingTime;
-        while (timer > 0)
+        playerMovement.canMove = false;
+        yield return new WaitForSeconds(1f);
+        playableDirector.Play();
+        yield return new WaitForSeconds(3f);
+
+        king.SetBool("run", true);
+
+        float mvSpeed = (watchingTime - 5) / Vector3.Distance(king.transform.position, kingTargetPoint.position);
+        Vector3 dir = (kingTargetPoint.position - king.transform.position).normalized;
+        while (Vector3.Distance(king.transform.position, kingTargetPoint.position) > 0.3f)
         {
-            timerText.text = ((int)timer).ToString();
-            timer -= Time.deltaTime;
+            king.transform.position += dir * mvSpeed * Time.deltaTime;
             yield return null;
         }
 
-        timerText.text = "";
+        Destroy(king.gameObject);
+
+        yield return new WaitForSeconds(2f);
+        playerMovement.GoSleep();
 
         EnemyController.instance.StartCoroutine(EnemyController.instance.SpawnEnemies(enemyCount, attackTime));
     }
@@ -65,14 +82,43 @@ public class GameManager : SerializedMonoBehaviour
 
         List<Transform> wrongObjects;
 
-        if (ObjectsController.CheckForWin(out wrongObjects))
+        if (ObjectsController.CheckForWin(out wrongObjects, maxWrongItems))
         {
-            timerText.text = "WIN";
+            if (wrongObjects.Count == 0)
+            {
+                timerText.text = "PERFECT";
+                yield return new WaitForSeconds(3f);
+            }
+            else
+            {
+                timerText.text = "WIN (" + wrongObjects.Count.ToString() + " mistakes)";
+
+                List<SpriteRenderer> renderers = new List<SpriteRenderer>();
+                foreach (Transform item in wrongObjects)
+                    renderers.AddRange(item.GetComponentsInChildren<SpriteRenderer>());
+
+                float t = Time.time;
+                while (t + 5f >= Time.time)
+                {
+                    foreach (var rend in renderers)
+                    {
+                        if (rend.name == "noColored") continue;
+                        rend.material = wrongMat;
+                    }
+                    yield return new WaitForSeconds(0.5f);
+                    foreach (var rend in renderers)
+                    {
+                        if (rend.name == "noColored") continue;
+                        rend.material = normalMat;
+                    }
+                    yield return new WaitForSeconds(0.5f);
+                }
+            }
         }
         else
         {
             //Lost. Highlight wrong objects
-            timerText.text = "LOST";
+            timerText.text = "LOST (" + wrongObjects.Count.ToString() + " mistakes)";
             List<SpriteRenderer> renderers = new List<SpriteRenderer>();
             foreach (Transform item in wrongObjects)
                 renderers.AddRange(item.GetComponentsInChildren<SpriteRenderer>());
