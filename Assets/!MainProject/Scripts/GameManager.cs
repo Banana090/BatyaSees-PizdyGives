@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using TMPro;
+using UnityEngine.Playables;
 
 public class GameManager : SerializedMonoBehaviour
 {
@@ -18,11 +19,15 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField] private Material wrongMat;
     [SerializeField] private Material normalMat;
 
+    [SerializeField] private Animator king;
+    [SerializeField] private Transform kingTargetPoint;
+
     [SerializeField] public LayerMask interactableObjects { get; private set; }
     [SerializeField] public int interactableLayerInt { get; private set; }
     [SerializeField] public Vector4 roomBorders { get; private set; }
 
     private PlayerMovement playerMovement;
+    private PlayableDirector playableDirector;
 
     private void Start()
     {
@@ -32,20 +37,31 @@ public class GameManager : SerializedMonoBehaviour
             Destroy(this);
 
         playerMovement = FindObjectOfType<PlayerMovement>();
+        playableDirector = GetComponent<PlayableDirector>();
         StartCoroutine(StartWatchingTime());
     }
 
     private IEnumerator StartWatchingTime()
     {
-        float timer = watchingTime;
-        while (timer > 0)
+        playerMovement.canMove = false;
+        yield return new WaitForSeconds(1f);
+        playableDirector.Play();
+        yield return new WaitForSeconds(3f);
+
+        king.SetBool("run", true);
+
+        float mvSpeed = (watchingTime - 5) / Vector3.Distance(king.transform.position, kingTargetPoint.position);
+        Vector3 dir = (kingTargetPoint.position - king.transform.position).normalized;
+        while (Vector3.Distance(king.transform.position, kingTargetPoint.position) > 0.3f)
         {
-            timerText.text = ((int)timer).ToString();
-            timer -= Time.deltaTime;
+            king.transform.position += dir * mvSpeed * Time.deltaTime;
             yield return null;
         }
 
-        timerText.text = "";
+        Destroy(king.gameObject);
+
+        yield return new WaitForSeconds(2f);
+        playerMovement.GoSleep();
 
         EnemyController.instance.StartCoroutine(EnemyController.instance.SpawnEnemies(enemyCount, attackTime));
     }

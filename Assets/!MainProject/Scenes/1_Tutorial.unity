@@ -1261,7 +1261,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 21051db8708995349bf93173457069cc, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -1342,13 +1342,15 @@ MonoBehaviour:
       Entry: 8
       Data: 
   timerText: {fileID: 1846249708}
-  watchingTime: 3
-  attackTime: 3
-  enemyCount: 3
-  playingTime: 3
+  watchingTime: 10
+  attackTime: 10
+  enemyCount: 1
+  playingTime: 15
   maxWrongItems: 0
   wrongMat: {fileID: 2100000, guid: 2cd3d733aad95d44d9d6b64143261708, type: 2}
   normalMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  king: {fileID: 1863857324}
+  kingTargetPoint: {fileID: 2025902550}
 --- !u!1 &985700115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,7 +3046,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3072,7 +3074,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 122.35
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3113,13 +3115,13 @@ MonoBehaviour:
   m_margin: {x: -31.120361, y: 0, z: -66.686646, w: -86.69263}
   m_textInfo:
     textComponent: {fileID: 1846249708}
-    characterCount: 2
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -3440,6 +3442,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapStep: 0.0625
+--- !u!1 &2025902549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2025902550}
+  m_Layer: 0
+  m_Name: KingTargetPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2025902550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025902549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2047332490
 GameObject:
   m_ObjectHideFlags: 0
