@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7700955323600665595}
   - component: {fileID: 7225735403462211435}
   m_Layer: 0
-  m_Name: Status
+  m_Name: noColored
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,7 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6257255470353131116}
   m_Layer: 0
-  m_Name: Scaler
+  m_Name: noColored
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
