@@ -9,6 +9,8 @@ public class Interacting : MonoBehaviour
 
     [SerializeField] private Material highlightMat;
     [SerializeField] private Material normalMat;
+    [SerializeField] private Animator spaceAnim;
+    [SerializeField] private bool showSpaceHint;
 
     [HideInInspector] public bool isDragging;
 
@@ -23,6 +25,9 @@ public class Interacting : MonoBehaviour
     private void Update()
     {
         CheckForNearestObjects();
+
+        if (showSpaceHint)
+            spaceAnim.SetBool("Space", nearestInteractableObject != null);
 
         if (Input.GetKeyDown(KeyCode.Space) && playerMovement.canMove)
         {

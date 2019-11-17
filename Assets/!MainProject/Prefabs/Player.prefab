@@ -99,7 +99,7 @@ MonoBehaviour:
   visualRoot: {fileID: 1610392277513820707}
   moveSpeed: 3
   anim: {fileID: 1610392277513820716}
-  sleepPoint: {fileID: 0}
+  sleepPoint: {x: 0, y: 0, z: 0}
   canMove: 1
   moveSpeedMultiplier: 0
 --- !u!114 &3101644892911594260
@@ -118,6 +118,8 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   highlightMat: {fileID: 2100000, guid: 0b25c20c5267a774cb7e2319956fb882, type: 2}
   normalMat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  spaceAnim: {fileID: 3489463022906803791}
+  showSpaceHint: 1
   isDragging: 0
 --- !u!114 &3101644892911594256
 MonoBehaviour:
@@ -223,6 +225,12 @@ Transform:
 --- !u!95 &1610392277513820716 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4418597097778946664, guid: b82e9a060bab235478f232f1f3bd88a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3101644892964780100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3489463022906803791 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1974355343566274059, guid: b82e9a060bab235478f232f1f3bd88a6,
     type: 3}
   m_PrefabInstance: {fileID: 3101644892964780100}
   m_PrefabAsset: {fileID: 0}

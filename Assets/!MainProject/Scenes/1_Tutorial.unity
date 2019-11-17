@@ -4188,11 +4188,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3101644892911594257, guid: 534c36ce4e0bd4f4d8a5977dedd6dea5,
-        type: 3}
-      propertyPath: sleepPoint
-      value: 
-      objectReference: {fileID: 627017841}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 534c36ce4e0bd4f4d8a5977dedd6dea5, type: 3}
 --- !u!1001 &3375525083590280017
