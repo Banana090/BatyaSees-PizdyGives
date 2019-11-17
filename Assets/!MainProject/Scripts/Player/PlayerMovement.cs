@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("walkRun", inputVector != Vector2.zero);
         }
 
-        if (inputVector != Vector2.zero)
+        if (inputVector.x != 0)
             visualRoot.localScale = new Vector3(Mathf.Sign(inputVector.x), 1, 1);
     }
 

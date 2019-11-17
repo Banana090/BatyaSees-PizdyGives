@@ -156,7 +156,6 @@ public class GameManager : SerializedMonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(3f);
         blackScreen.SetTrigger("Show");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(0);
