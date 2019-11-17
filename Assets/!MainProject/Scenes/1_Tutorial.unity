@@ -1342,8 +1342,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
   timerText: {fileID: 1846249708}
-  watchingTime: 10
-  attackTime: 10
+  watchingTime: 6
+  attackTime: 2
   enemyCount: 1
   playingTime: 15
   maxWrongItems: 0

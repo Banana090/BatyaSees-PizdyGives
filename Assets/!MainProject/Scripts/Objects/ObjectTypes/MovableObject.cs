@@ -12,9 +12,10 @@ public sealed class MovableObject : SceneObject, IInteractableSceneObject
         startPosition = transform.position;
     }
 
-    public void Interact()
+    public bool Interact()
     {
         PlayerDrag.instance.SetDragObject(transform);
+        return false;
     }
 
     public Transform GetThisTransform()

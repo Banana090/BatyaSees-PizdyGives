@@ -50,7 +50,7 @@ public class GameManager : SerializedMonoBehaviour
 
         king.SetBool("run", true);
 
-        float mvSpeed = (watchingTime - 5) / Vector3.Distance(king.transform.position, kingTargetPoint.position);
+        float mvSpeed = Vector3.Distance(king.transform.position, kingTargetPoint.position) / (watchingTime - 5);
         Vector3 dir = (kingTargetPoint.position - king.transform.position).normalized;
         while (Vector3.Distance(king.transform.position, kingTargetPoint.position) > 0.3f)
         {

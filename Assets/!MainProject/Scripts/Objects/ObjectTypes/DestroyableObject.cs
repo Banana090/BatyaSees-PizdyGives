@@ -25,9 +25,10 @@ public class DestroyableObject : SceneObject, IInteractableSceneObject
         gameObject.layer = GameManager.instance.interactableLayerInt;
     }
 
-    public void Interact()
+    public bool Interact()
     {
         Repair();
+        return false;
     }
 
     private void Repair()

@@ -6,9 +6,10 @@ public class Item : MonoBehaviour, IInteractableSceneObject
 {
     public Transform parentStack;
 
-    public void Interact()
+    public bool Interact()
     {
         PlayerPickup.instance.PickupItem(this);
+        return false;
     }
 
     public Transform GetThisTransform()

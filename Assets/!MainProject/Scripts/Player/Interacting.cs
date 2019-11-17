@@ -27,13 +27,14 @@ public class Interacting : MonoBehaviour
         CheckForNearestObjects();
 
         if (showSpaceHint)
-            spaceAnim.SetBool("Space", nearestInteractableObject != null);
+            spaceAnim.SetBool("Space", nearestInteractableObject != null && !isDragging);
 
         if (Input.GetKeyDown(KeyCode.Space) && playerMovement.canMove)
         {
             if (!isDragging && nearestInteractableObject != null)
             {
-                nearestInteractableObject.Interact();
+                if (nearestInteractableObject.Interact())
+                    nearestInteractableObject = null;
             }
             else if (isDragging)
             {
@@ -46,6 +47,16 @@ public class Interacting : MonoBehaviour
         {
             PlayerDrag.instance.ReleaseDrag();
             isDragging = false;
+        }
+
+        if (isDragging && nearestInteractableObject != null)
+        {
+            SpriteRenderer[] r = nearestInteractableObject.GetThisTransform().GetComponentsInChildren<SpriteRenderer>();
+            foreach (var item in r)
+            {
+                if (item.name == "noColored") continue;
+                item.material = normalMat;
+            }
         }
     }
 
