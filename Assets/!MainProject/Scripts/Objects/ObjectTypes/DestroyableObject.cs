@@ -7,6 +7,7 @@ public class DestroyableObject : SceneObject, IInteractableSceneObject
     [Range(0f, 1f)]
     [SerializeField] private float repairPoints;
     [SerializeField] private Transform[] sprites;
+    [SerializeField] private g51_Bar slider;
 
     public float repairAmount { get; private set; }
 
@@ -32,15 +33,12 @@ public class DestroyableObject : SceneObject, IInteractableSceneObject
     private void Repair()
     {
         repairAmount += repairPoints;
+        slider.value = repairAmount;
+
         if (repairAmount >= 1)
-        {
             RepairFully();
-            //Repaired effect? Destroy slider
-        }
         else
-        {
-            //ShowProgressSlider
-        }
+            slider.gameObject.SetActive(true);
     }
 
     private void RepairFully()
@@ -49,5 +47,6 @@ public class DestroyableObject : SceneObject, IInteractableSceneObject
         sprites[0].gameObject.SetActive(true);
         sprites[1].gameObject.SetActive(false);
         gameObject.layer = 0;
+        slider.gameObject.SetActive(false);
     }
 }
