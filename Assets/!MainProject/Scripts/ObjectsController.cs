@@ -20,11 +20,9 @@ public class ObjectsController : MonoBehaviour
         sceneObjects = new List<SceneObject>();
         isObjectFree = new List<bool>();
 
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            sceneObjects.Add(transform.GetChild(i).GetComponent<SceneObject>());
+        sceneObjects.AddRange(FindObjectsOfType<SceneObject>().Where(x => x.gameObject.activeInHierarchy));
+        for (int i = 0; i < sceneObjects.Count; i++)
             isObjectFree.Add(true);
-        }
     }
 
     public static bool CheckForWin(out List<Transform> wrongObjects)

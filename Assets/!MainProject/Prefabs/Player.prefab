@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eba557b4a25c7d4c864aa3db1c7cc58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragSpeedMultiplier: 0.3
+  dragSpeedMultiplier: 0.5
 --- !u!1001 &3101644892964780100
 PrefabInstance:
   m_ObjectHideFlags: 0

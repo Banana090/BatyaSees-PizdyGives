@@ -112,12 +112,12 @@ public class Enemy : MonoBehaviour
         {
             Vector3 offset = target.transform.position - transform.position;
             Vector3 moveTo = (GameManager.GetRandomPointInRoom() - transform.position).normalized;
-            float timeToDrag = Random.Range(1f, 2.3f);
+            float timeToDrag = Random.Range(1.5f, 5f);
             float startTime = Time.time;
 
             while (startTime + timeToDrag >= Time.time)
             {
-                transform.position += moveTo * moveSpeed * 0.3f * Time.deltaTime;
+                transform.position += moveTo * moveSpeed * 0.6f * Time.deltaTime;
                 target.transform.position = transform.position + offset;
                 yield return null;
             }
@@ -154,12 +154,12 @@ public class Enemy : MonoBehaviour
 
         Vector3 offset = target.transform.position - transform.position;
         Vector3 moveTo = (GameManager.GetRandomPointInRoom() - transform.position).normalized;
-        float timeToDrag = Random.Range(1f, 2.3f);
+        float timeToDrag = Random.Range(2.1f, 5f);
         float startTime = Time.time;
 
         while (startTime + timeToDrag >= Time.time)
         {
-            transform.position += moveTo * moveSpeed * 0.3f * Time.deltaTime;
+            transform.position += moveTo * moveSpeed * 0.6f * Time.deltaTime;
             target.transform.position = transform.position + offset;
             yield return null;
         }

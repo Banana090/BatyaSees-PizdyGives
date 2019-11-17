@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
 
     private Stack<Enemy> enemies;
+    private PlayerMovement playerMovement;
 
     private void Start()
     {
@@ -19,10 +20,13 @@ public class EnemyController : MonoBehaviour
             Destroy(this);
 
         enemies = new Stack<Enemy>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
     public IEnumerator SpawnEnemies(int count, float time)
     {
+        playerMovement.GoSleep();
+        yield return new WaitForSeconds(3.5f);
         float currentTime = Time.time;
         for (int i = 0; i < count; i++)
         {
