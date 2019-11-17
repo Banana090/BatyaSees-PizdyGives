@@ -2317,6 +2317,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 8966015072013698088, guid: 67db6239d5698fa45a5fdf125388e4ca,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966015072013698088, guid: 67db6239d5698fa45a5fdf125388e4ca,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966015072013698088, guid: 67db6239d5698fa45a5fdf125388e4ca,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966015072013698088, guid: 67db6239d5698fa45a5fdf125388e4ca,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 7901107379942606463, guid: 67db6239d5698fa45a5fdf125388e4ca,
         type: 3}
       propertyPath: m_IsActive
@@ -2681,7 +2701,7 @@ PrefabInstance:
     - target: {fileID: 8966015071342763463, guid: 67db6239d5698fa45a5fdf125388e4ca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0625
       objectReference: {fileID: 0}
     - target: {fileID: 8966015071342763463, guid: 67db6239d5698fa45a5fdf125388e4ca,
         type: 3}
@@ -3001,6 +3021,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966015072013698088, guid: 67db6239d5698fa45a5fdf125388e4ca,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966015072013698088, guid: 67db6239d5698fa45a5fdf125388e4ca,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966015072013698088, guid: 67db6239d5698fa45a5fdf125388e4ca,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7901107379942606463, guid: 67db6239d5698fa45a5fdf125388e4ca,
         type: 3}
@@ -5601,7 +5636,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2cd3d733aad95d44d9d6b64143261708, type: 2}
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 7519297937124091835, guid: ae8bfe78526c1644c86025852f4cc6b2,
         type: 3}
       propertyPath: serializationData.Prefab
